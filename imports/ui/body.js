@@ -9,6 +9,10 @@ import './body.html';
 Session.set('generatorState',true);
 Session.set('listingInfoState',false);
 
+Template.body.rendered=function() {
+	$('#my-datepicker').datepicker();
+}
+
 Template.body.helpers({
 	//meteor add session
 	showListing:  function() {

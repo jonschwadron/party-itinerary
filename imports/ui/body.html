@@ -3,7 +3,7 @@
 		<div class="row">
 			<div id="listing-input-form">
 				<form class="new-listing">
-					<span id="input-search-text"><i class="fa fa-search" aria-hidden="true"></i><input id="input-search" type="text" name="listing" placeholder="paste airbnb link" /></span>
+					<span id="input-search-text"><input id="input-search" type="text" name="listing" placeholder="paste airbnb link" /><i id="icon-search" class="fa fa-search" aria-hidden="true"></i></span>
 				</form>
 			</div>
 		</div>
@@ -14,7 +14,10 @@
 			</div>
 			{{#if showListing}}
 			<ul>
-				<li class="listing-list">Check In<div class="line"></div></li>
+				<li class="listing-list">
+					<input type="text" class="form-control" id="my-datepicker">
+					<div class="line"></div>
+				</li>
 
 				<li class="listing-list">Check Out<div class="line"></div></li>
 				<li class="listing-list">Guest: 15<div class="line"></div></li>
@@ -53,8 +56,8 @@
 			</ul>
 
 			<form class="new-expense">
-				<input type="text" name="text" placeholder="add an expense" />
-				<input type="number" name="price" placeholder="how much?" />
+				<input type="text" name="text" placeholder="add expense" />
+				<input type="number" name="price" placeholder="cost" />
 				<button id="addExpenseButton">+</button>
 			</form>
 
