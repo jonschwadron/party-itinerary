@@ -3,7 +3,7 @@
 		<div class="row">
 			<div id="listing-input-form">
 				<form class="new-listing">
-					<span id="input-search-text"><input id="input-search" type="text" name="listing" placeholder="paste airbnb link" /><i id="icon-search" class="fa fa-search" aria-hidden="true"></i></span>
+					<input id="input-search" type="text" name="listing" placeholder="https://www.airbnb.com/rooms/14397710" /><i id="icon-search" class="fa fa-search" aria-hidden="true"></i>
 				</form>
 			</div>
 		</div>
@@ -15,16 +15,42 @@
 			{{#if showListing}}
 			<ul>
 				<li class="listing-list">
-					<input type="text" class="form-control" id="my-datepicker">
-					<div class="line"></div>
+					<div class="date_label_from">
+						<label class="list-label" for="from">Check In</label>
+						<input type="text" id="from">
+					</div>
+					<div class="date_label_to">
+						<label class="list-label" for="to">Check Out</label>
+						<input type="text" id="to">
+					</div>
+					<div class="guest_label">
+						<label class="list-label" for="guests-selector">Guests</label>
+						<select name="numberOfGuests" class="arrow" id="guests-selector">
+							<option value="1">1</option>
+							<option value="2">2</option>
+							<option value="3">3</option>
+							<option value="4">4</option>
+							<option value="5">5</option>
+							<option value="6">6</option>
+							<option value="7">7</option>
+							<option value="8">8</option>
+							<option value="9">9</option>
+							<option value="10">10</option>
+							<option value="11">11</option>
+							<option value="12">12</option>
+							<option value="13">13</option>
+							<option value="14">14</option>
+							<option selected value="15">15</option>
+							<option value="16">16</option>
+						</select>
+						<div class="arrow"></div>
+					</div>
 				</li>
-
-				<li class="listing-list">Check Out<div class="line"></div></li>
-				<li class="listing-list">Guest: 15<div class="line"></div></li>
 				<li class="listing-list">Room cost x Number of nights<div class="line"></div></li>
 				<li class="listing-list">Cleaning fee<div class="line"></div></li>
 				<li class="listing-list">Service fee<div class="line"></div></li>
 				<li class="listing-list">Occupancy Taxes<div class="line"></div></li>
+				<li class="listing-list">Total<div class="line"></div></li>
 			</ul>
 			<div id="generate-button">
 				Request to Book
