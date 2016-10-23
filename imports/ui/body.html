@@ -1,35 +1,68 @@
 <body>
 	<div class="container">
-		<header>
-			<div id="party-itinerary">
-				<a id="itinerary-toggle" href="#">airbnb party proposal</a>
+		<div class="row">
+			<div id="listing-input-form">
+				<form class="new-listing">
+					<span id="input-search-text"><i class="fa fa-search" aria-hidden="true"></i><input id="input-search" type="text" name="listing" placeholder="paste airbnb link" /></span>
+				</form>
 			</div>
-		</header>
-	{{#if showGenerator}}
-		<div id="individual-total">
-			<span><span id="total">${{ total }}</span> per person</span>
 		</div>
 
-		<ul>
-			<li class="expense-list">
-				<span id="room-text">$2000 / group of 15</span>
-				<span id="room-price">133</span>
-				<div class="line"></div>
-			</li>
-			{{#each expenses}}
-				{{> expense}}
-			{{/each}}
-		</ul>
+		<div class="row">
+			<div id="listing-info">
+				<a id="listing-toggle" href="#">airbnb listing info</a>
+			</div>
+			{{#if showListing}}
+			<ul>
+				<li class="listing-list">Check In<div class="line"></div></li>
 
-		<form class="new-expense">
-			<input type="text" name="text" placeholder="type name of expense" />
-			<input type="number" name="price" placeholder="how much?" />
-			<button id="addExpenseButton">+</button>
-		</form>
-
-		<div id="generate-button">
-			Generate Party Proposal
+				<li class="listing-list">Check Out<div class="line"></div></li>
+				<li class="listing-list">Guest: 15<div class="line"></div></li>
+				<li class="listing-list">Room cost x Number of nights<div class="line"></div></li>
+				<li class="listing-list">Cleaning fee<div class="line"></div></li>
+				<li class="listing-list">Service fee<div class="line"></div></li>
+				<li class="listing-list">Occupancy Taxes<div class="line"></div></li>
+			</ul>
+			<div id="generate-button">
+				Request to Book
+			</div>
+			{{/if}}
 		</div>
-	{{/if}}
+
+		<div class="row">
+			<header>
+				<div id="party-itinerary">
+					<a id="itinerary-toggle" href="#">airbnb party itinerary</a>
+				</div>
+			</header>
+
+			{{#if showGenerator}}
+			<div id="individual-total">
+				<span><span id="total">${{ total }}</span> per person</span>
+			</div>
+
+			<ul>
+				<li class="expense-list">
+					<span id="room-text">$2000 / group of 15</span>
+					<span id="room-price">133</span>
+					<div class="line"></div>
+				</li>
+				{{#each expenses}}
+					{{> expense}}
+				{{/each}}
+			</ul>
+
+			<form class="new-expense">
+				<input type="text" name="text" placeholder="add an expense" />
+				<input type="number" name="price" placeholder="how much?" />
+				<button id="addExpenseButton">+</button>
+			</form>
+
+			<div id="generate-button">
+				Generate Party Itinerary
+			</div>
+			{{/if}}
+		</div>
+
 	</div>
 </body>
