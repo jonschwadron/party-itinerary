@@ -7,11 +7,7 @@ import './body.html';
 
 //show generator by default
 Session.set('generatorState',true);
-Session.set('listingInfoState',false);
-
-Template.body.rendered=function() {
-	$('#my-datepicker').datepicker();
-}
+Session.set('listingInfoState',true);
 
 Template.body.helpers({
 	//meteor add session
@@ -37,6 +33,12 @@ Template.body.helpers({
 });
 
 Template.body.events({
+	'focus #from': function () {
+		$( "#from" ).datepicker();
+	},
+	'focus #to': function () {
+		$( "#to" ).datepicker();
+	},
 	'click #listing-toggle': function () {
 		if (Session.get('listingInfoState')) {
 			Session.set('listingInfoState', false);
@@ -52,6 +54,20 @@ Template.body.events({
 			Session.set('generatorState', true);
 		}
 
+	},
+	'submit .new-listing'(event) {
+		event.preventDefault();
+		const target = event.target;
+		const listing = target.listing.value;
+		console.log("search input: " + listing);
+
+		var a = document.createElement('a');
+		a.href = listing;
+		var pathSplitted = a['pathname'].split('/');
+		var listingId = pathSplitted[2];
+		console.log("listing_id: " + listingId);
+
+		target.listing.value = '';
 	},
 	'submit .new-expense'(event) {
 		// Prevent default browser form submit
