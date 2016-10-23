@@ -1,0 +1,35 @@
+<body>
+	<div class="container">
+		<header>
+			<div id="party-itinerary">
+				<a id="itinerary-toggle" href="#">airbnb party proposal</a>
+			</div>
+		</header>
+	{{#if showGenerator}}
+		<div id="individual-total">
+			<span><span id="total">${{ total }}</span> per person</span>
+		</div>
+
+		<ul>
+			<li class="expense-list">
+				<span id="room-text">$2000 / group of 15</span>
+				<span id="room-price">133</span>
+				<div class="line"></div>
+			</li>
+			{{#each expenses}}
+				{{> expense}}
+			{{/each}}
+		</ul>
+
+		<form class="new-expense">
+			<input type="text" name="text" placeholder="type name of expense" />
+			<input type="number" name="price" placeholder="how much?" />
+			<button id="addExpenseButton">+</button>
+		</form>
+
+		<div id="generate-button">
+			Generate Party Proposal
+		</div>
+	{{/if}}
+	</div>
+</body>
