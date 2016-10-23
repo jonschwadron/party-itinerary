@@ -7,9 +7,13 @@ import './body.html';
 
 //show generator by default
 Session.set('generatorState',true);
+Session.set('listingInfoState',false);
 
 Template.body.helpers({
 	//meteor add session
+	showListing:  function() {
+		return Session.get('listingInfoState');
+	},
 	showGenerator:  function() {
 		return Session.get('generatorState');
 	},
@@ -29,6 +33,14 @@ Template.body.helpers({
 });
 
 Template.body.events({
+	'click #listing-toggle': function () {
+		if (Session.get('listingInfoState')) {
+			Session.set('listingInfoState', false);
+		} else {
+			Session.set('listingInfoState', true);
+		}
+
+	},
 	'click #itinerary-toggle': function () {
 		if (Session.get('generatorState')) {
 			Session.set('generatorState', false);
