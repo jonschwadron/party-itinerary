@@ -1,6 +1,5 @@
 import { Template } from 'meteor/templating';
 import { Expenses } from '../api/expenses.js';
-import { HTTP } from 'meteor/http';
 
 import './expense.js';
 import './body.html';
@@ -8,6 +7,7 @@ import './body.html';
 //show generator by default
 Session.set('generatorState',false);
 Session.set('listingInfoState',false);
+
 
 Template.body.helpers({
 	//meteor add session
@@ -66,18 +66,19 @@ Template.body.events({
 
 		var path = a['pathname'].split('/');
 		var listingId = '';
+
 		if (path.length > 3 ){
 			listingId = path[3];
 		} else {
 			listingId = path[2];
 		}
+
 		var clientId = '?client_id=3092nxybyb0otqw18e8nh5nty';
 		var format = '&_format=v1_legacy_for_p3'
 		var apiUrl = 'https://api.airbnb.com/v2/listings/' + listingId + clientId + format;
-		var response = HTTP.get(apiUrl, function (error, data){
-		    console.log( 'http.get ::', error, data);
+		var response = HTTP.get(apiUrl, function (error, data) {
+			console.log( 'http.get ::', error, data);
 		});
-
 
 		Session.set('listingInfoState', true);
 		target.listing.value = '';

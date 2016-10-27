@@ -1,0 +1,7 @@
+{
+  "galaxy.meteor.com": {
+     "env": {
+       "MONGO_URL": "mongodb://ppbot:alloAlloFromAnotherPlanetA17@ds059888.mlab.com:59888/ppdb"
+     }
+   }
+}
