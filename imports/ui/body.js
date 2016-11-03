@@ -33,6 +33,9 @@ Template.body.helpers({
 
 		return (Math.ceil((sum + 2000) / 15));
 	},
+	roomCost() {
+		return Session.get('price');
+	},
 });
 
 Template.body.events({
@@ -78,8 +81,11 @@ Template.body.events({
 
 		if (Meteor.isClient) {
 			Meteor.call('getListing', listingId, function(error, result) {
-				console.log(result);
-				console.log(error);
+				console.log(result.listing.price);
+
+				Session.set({
+					price: result.listing.price,
+				});
 			});
 		}
 
