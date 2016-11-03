@@ -1,22 +1,15 @@
-import {
-	Template
-}
-from 'meteor/templating';
-import {
-	Expenses
-}
-from '../api/expenses.js';
+import { Template } from 'meteor/templating';
+import { Expenses } from '../api/expenses.js';
+import { HTTP } from 'meteor/http';
 
 import './expense.js';
 import './body.html';
 
-//show generator by default
-Session.set('generatorState', false);
+//hide generator by default
 Session.set('listingInfoState', false);
-
+Session.set('generatorState', false);
 
 Template.body.helpers({
-	//meteor add session
 	showListing: function() {
 		return Session.get('listingInfoState');
 	},
@@ -83,11 +76,12 @@ Template.body.events({
 			listingId = path[2];
 		}
 
-		Meteor.call('getListing', listingId, function(error, result) {
-			console.log(error);
-			console.log(result);
-		});
-
+		if (Meteor.isClient) {
+			Meteor.call('getListing', listingId, function(error, result) {
+				console.log(result);
+				console.log(error);
+			});
+		}
 
 		Session.set('listingInfoState', true);
 		target.listing.value = '';
@@ -111,5 +105,8 @@ Template.body.events({
 		//clear form
 		target.text.value = '';
 		target.price.value = '';
+	},
+	'click #generate-button'() {
+		console.log("[ #generate-button clicked. ]");
 	},
 });
