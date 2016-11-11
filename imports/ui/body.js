@@ -9,8 +9,6 @@ import './body.html';
 Session.set('listingInfoState', false);
 Session.set('generatorState', false);
 
-let listingPrice = Session.get('price');
-
 Template.body.helpers({
 	showListing: function() {
 		return Session.get('listingInfoState');
@@ -38,7 +36,7 @@ Template.body.helpers({
 		return total;
 	},
 	listingPrice() {
-		return listingPrice;
+		return Session.get('price');
 	},
 	individualRoomPrice() {
 		return Math.ceil( total / 15);
