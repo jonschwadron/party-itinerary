@@ -18,11 +18,11 @@
 				<li class="listing-list">
 					<div class="date_label_from">
 						<label class="list-label" for="from">Check In</label>
-						<input type="text" id="from">
+						<input type="text" id="from" placeholder="mm/dd/yyyy">
 					</div>
 					<div class="date_label_to">
 						<label class="list-label" for="to">Check Out</label>
-						<input type="text" id="to">
+						<input type="text" id="to" placeholder="mm/dd/yyyy">
 					</div>
 					<div class="guest_label">
 						<label class="list-label" for="guests-selector">Guests</label>
@@ -47,8 +47,8 @@
 						<div class="arrow"></div>
 					</div>
 				</li>
-				<li class="listing-list">{{ roomCost }} x Number of nights<div class="line"></div></li>
-				<li class="listing-list">Cleaning fee<div class="line"></div></li>
+				<li class="listing-list">{{ listingPrice }} x Number of nights<div class="line"></div></li>
+				<li class="listing-list">{{ cleaningFee }}<div class="line"></div></li>
 				<li class="listing-list">Service fee<div class="line"></div></li>
 				<li class="listing-list">Occupancy Taxes<div class="line"></div></li>
 				<li class="listing-list">Total<div class="line"></div></li>
@@ -73,8 +73,8 @@
 
 			<ul>
 				<li class="expense-list">
-					<span id="room-text">$2000 / group of 15</span>
-					<span id="room-price">133</span>
+					<span id="room-text">${{ listingPrice }} / group of 15</span>
+					<span id="room-price">${{ individualRoomPrice }}</span>
 					<div class="line"></div>
 				</li>
 				{{#each expenses}}

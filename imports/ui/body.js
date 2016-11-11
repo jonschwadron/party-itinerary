@@ -9,6 +9,8 @@ import './body.html';
 Session.set('listingInfoState', false);
 Session.set('generatorState', false);
 
+let listingPrice = Session.get('price');
+
 Template.body.helpers({
 	showListing: function() {
 		return Session.get('listingInfoState');
@@ -31,11 +33,16 @@ Template.body.helpers({
 			sum += parseInt(item.price);
 		});
 
-		return (Math.ceil((sum + 2000) / 15));
+		let total = Math.ceil((sum + listingPrice) / 15)
+
+		return total;
 	},
-	roomCost() {
-		return Session.get('price');
+	listingPrice() {
+		return listingPrice;
 	},
+	individualRoomPrice() {
+		return Math.ceil( total / 15);
+	}
 });
 
 Template.body.events({
@@ -81,7 +88,7 @@ Template.body.events({
 
 		if (Meteor.isClient) {
 			Meteor.call('getListing', listingId, function(error, result) {
-				console.log(result.listing.price);
+				console.log(result.listing.cleaning_fee_native);
 
 				Session.set({
 					price: result.listing.price,
